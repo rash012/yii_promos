@@ -3,16 +3,22 @@
 use yii\db\Migration;
 
 /**
- * Class m180516_115351_create_table_promos
+ * Class m180516_115351_create_table_promo
  */
-class m180516_115351_create_table_promos extends Migration
+class m180516_115351_create_table_promo extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-
+        $this->createTable('promo', [
+            'id' => $this->primaryKey(),
+            'title' => $this->string()->notNull(),
+            'content' => $this->text(),
+            'start_date' => $this->date(),
+            'end_date' => $this->date(),
+        ]);
     }
 
     /**
@@ -20,9 +26,8 @@ class m180516_115351_create_table_promos extends Migration
      */
     public function safeDown()
     {
-        echo "m180516_115351_create_table_promos cannot be reverted.\n";
+        $this->dropTable('promo');
 
-        return false;
     }
 
     /*
